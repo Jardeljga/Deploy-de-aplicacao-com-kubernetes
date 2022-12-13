@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Inciando a criacao das imagens"
 
 docker build -t jardeljga/backend-projetodio:1.0 backend/.
