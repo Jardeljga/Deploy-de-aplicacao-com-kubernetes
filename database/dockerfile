@@ -1,7 +1,5 @@
 FROM mysql:5.7
 
 WORKDIR /var/lib/mysql/
-ENV MYSQL_ROOT_PASSWORD=Bootcamp@123
-ENV MYSQL_DATABASE=bootcamp
 ADD comando.sql /docker-entrypoint-initdb.d
 EXPOSE 3306

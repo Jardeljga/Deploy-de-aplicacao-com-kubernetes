@@ -20,6 +20,8 @@ spec:
   selector:
     matchLabels:
       app: mysql
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -31,6 +33,17 @@ spec:
         - "--ignore-db-dir=lost+found"
         imagePullPolicy: Always
         name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: ROOT_PASSWORD
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: MYSQL_DATABASE
         ports: 
         - containerPort: 3306
           name: mysql
